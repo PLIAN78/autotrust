@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { api, Car, Claim } from "@/lib/api";
 
-export default function CarDetailPage({ params }: { params: { carId: string } }) {
+export default function CarDetailPage(props: { params: Promise<{ carId: string }> }) {
+  const params = use(props.params);
   const carId = params.carId;
 
   const [car, setCar] = useState<Car | null>(null);
