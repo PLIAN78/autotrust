@@ -37,93 +37,163 @@ export default function SubmitClaimPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <a href="/" className="text-sm text-neutral-400 hover:text-white">← Back</a>
-
-      <div>
-        <h1 className="text-2xl font-semibold">Submit a claim</h1>
-        <p className="mt-2 text-sm text-neutral-300 max-w-2xl">
-          Your claim is stored off-chain, then anchored with a proof hash (and tx when available).
-        </p>
-      </div>
-
-      <form onSubmit={onSubmit} className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6 space-y-4">
-        <div className="grid gap-4 md:grid-cols-2">
-          <label className="space-y-2">
-            <div className="text-xs text-neutral-400">Car ID</div>
-            <input className="w-full rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm"
-              value={carId} onChange={(e) => setCarId(e.target.value)} />
-          </label>
-
-          <label className="space-y-2">
-            <div className="text-xs text-neutral-400">Category</div>
-            <select className="w-full rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm"
-              value={category} onChange={(e) => setCategory(e.target.value as any)}>
-              <option value="reliability">reliability</option>
-              <option value="ownership_cost">ownership_cost</option>
-              <option value="comfort">comfort</option>
-              <option value="efficiency">efficiency</option>
-              <option value="safety">safety</option>
-            </select>
-          </label>
-        </div>
-
-        <label className="space-y-2 block">
-          <div className="text-xs text-neutral-400">Claim statement</div>
-          <textarea className="w-full min-h-[88px] rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm"
-            value={statement} onChange={(e) => setStatement(e.target.value)} />
-        </label>
-
-        <label className="space-y-2 block">
-          <div className="text-xs text-neutral-400">Evidence summary</div>
-          <textarea className="w-full min-h-[88px] rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm"
-            value={evidenceSummary} onChange={(e) => setEvidenceSummary(e.target.value)} />
-        </label>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <label className="space-y-2">
-            <div className="text-xs text-neutral-400">Contributor type</div>
-            <select className="w-full rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm"
-              value={contribType} onChange={(e) => setContribType(e.target.value as any)}>
-              <option value="owner">owner</option>
-              <option value="mechanic">mechanic</option>
-              <option value="expert">expert</option>
-            </select>
-          </label>
-
-          <label className="space-y-2">
-            <div className="text-xs text-neutral-400">Display name</div>
-            <input className="w-full rounded-xl border border-neutral-800 bg-neutral-950 px-4 py-3 text-sm"
-              value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-          </label>
-        </div>
-
-        <button
-          disabled={submitting}
-          className="rounded-xl bg-white px-4 py-3 text-sm font-medium text-black hover:bg-neutral-200 disabled:opacity-60"
-          type="submit"
+    <div className="relative overflow-hidden rounded-[28px] border border-neutral-800/80 bg-neutral-850/40">
+      {/* Steel base */}
+      <div className="pointer-events-none absolute inset-0 bg-neutral-900" />
+  
+      {/* Brushed steel sheen */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-80
+                   bg-[linear-gradient(120deg,
+                   rgba(225,225,225,0.10),
+                   rgba(255,255,255,0.03)_35%,
+                   rgba(0,0,0,0.25)_70%,
+                   rgba(255,255,255,0.06))]"
+      />
+  
+      {/* Highlight bloom */}
+      <div
+        className="pointer-events-none absolute inset-0
+                   bg-[radial-gradient(80%_55%_at_20%_0%,
+                   rgba(255,255,255,0.10),
+                   transparent_60%)]"
+      />
+  
+      {/* Content */}
+      <div className="relative space-y-10 p-6 sm:p-8">
+        {/* Header */}
+        <section className="space-y-3">
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white"
+          >
+            ← Back
+          </a>
+  
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Submit a claim
+          </h1>
+  
+          <p className="max-w-2xl text-sm leading-relaxed text-neutral-300">
+            Claims are stored off-chain and anchored with a cryptographic proof hash
+            (and Solana transaction when available).
+          </p>
+        </section>
+  
+        {/* Form panel */}
+        <form
+          onSubmit={onSubmit}
+          className="rounded-3xl border border-neutral-800/80 bg-neutral-900/40 backdrop-blur p-6 space-y-6"
         >
-          {submitting ? "Submitting..." : "Submit claim"}
-        </button>
-
-        {result && (
-          <div className="rounded-xl border border-green-900 bg-green-950/40 px-4 py-3 text-sm text-green-200">
-            <div>✅ Submitted</div>
-            <div className="mt-2 text-xs text-neutral-200">
-              Proof hash: <span className="font-mono">{result.hash}</span>
-            </div>
-            <div className="mt-1 text-xs text-neutral-200">
-              Solana tx: <span className="font-mono">{result.solanaTx ?? "pending"}</span>
-            </div>
+          {/* Car + category */}
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="space-y-2">
+              <div className="text-xs text-neutral-400">Car ID</div>
+              <input
+                className="w-full rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm outline-none focus:border-neutral-600"
+                value={carId}
+                onChange={(e) => setCarId(e.target.value)}
+              />
+            </label>
+  
+            <label className="space-y-2">
+              <div className="text-xs text-neutral-400">Category</div>
+              <select
+                className="w-full rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm outline-none focus:border-neutral-600"
+                value={category}
+                onChange={(e) => setCategory(e.target.value as any)}
+              >
+                <option value="reliability">reliability</option>
+                <option value="ownership_cost">ownership_cost</option>
+                <option value="comfort">comfort</option>
+                <option value="efficiency">efficiency</option>
+                <option value="safety">safety</option>
+              </select>
+            </label>
           </div>
-        )}
-
-        {err && (
-          <div className="rounded-xl border border-red-900 bg-red-950/40 px-4 py-3 text-sm text-red-200">
-            {err}
+  
+          {/* Statement */}
+          <label className="space-y-2 block">
+            <div className="text-xs text-neutral-400">Claim statement</div>
+            <textarea
+              className="w-full min-h-[96px] rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm outline-none focus:border-neutral-600"
+              value={statement}
+              onChange={(e) => setStatement(e.target.value)}
+            />
+          </label>
+  
+          {/* Evidence */}
+          <label className="space-y-2 block">
+            <div className="text-xs text-neutral-400">Evidence summary</div>
+            <textarea
+              className="w-full min-h-[96px] rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm outline-none focus:border-neutral-600"
+              value={evidenceSummary}
+              onChange={(e) => setEvidenceSummary(e.target.value)}
+            />
+          </label>
+  
+          {/* Contributor */}
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="space-y-2">
+              <div className="text-xs text-neutral-400">Contributor type</div>
+              <select
+                className="w-full rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm outline-none focus:border-neutral-600"
+                value={contribType}
+                onChange={(e) => setContribType(e.target.value as any)}
+              >
+                <option value="owner">owner</option>
+                <option value="mechanic">mechanic</option>
+                <option value="expert">expert</option>
+              </select>
+            </label>
+  
+            <label className="space-y-2">
+              <div className="text-xs text-neutral-400">Display name</div>
+              <input
+                className="w-full rounded-xl border border-neutral-800 bg-neutral-950/60 px-4 py-3 text-sm outline-none focus:border-neutral-600"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+              />
+            </label>
           </div>
-        )}
-      </form>
+  
+          {/* Submit */}
+          <div className="flex items-center gap-3">
+            <button
+              disabled={submitting}
+              type="submit"
+              className="rounded-xl bg-white/95 px-5 py-3 text-sm font-medium text-black hover:bg-white disabled:opacity-60 transition"
+            >
+              {submitting ? "Submitting…" : "Submit claim"}
+            </button>
+  
+            <span className="text-xs text-neutral-400">
+              Proof hash generated after submission
+            </span>
+          </div>
+  
+          {/* Success */}
+          {result && (
+            <div className="rounded-2xl border border-emerald-900/60 bg-emerald-950/30 px-4 py-3 text-sm text-emerald-200">
+              <div className="font-medium">Claim submitted</div>
+              <div className="mt-2 text-xs text-neutral-200">
+                Proof hash: <span className="font-mono">{result.hash}</span>
+              </div>
+              <div className="mt-1 text-xs text-neutral-200">
+                Solana tx:{" "}
+                <span className="font-mono">{result.solanaTx ?? "pending"}</span>
+              </div>
+            </div>
+          )}
+  
+          {/* Error */}
+          {err && (
+            <div className="rounded-2xl border border-red-900/60 bg-red-950/30 px-4 py-3 text-sm text-red-200">
+              {err}
+            </div>
+          )}
+        </form>
+      </div>
     </div>
-  );
+  );  
 }

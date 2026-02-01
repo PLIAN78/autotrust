@@ -31,9 +31,9 @@ export default function HomePage() {
   }, [cars, q]);
 
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-neutral-800/80 bg-neutral-950/40">
+    <div className="relative overflow-hidden rounded-[28px] border border-neutral-800/80 bg-neutral-850/40">
       {/* Steel base */}
-      <div className="pointer-events-none absolute inset-0 bg-neutral-950" />
+      <div className="pointer-events-none absolute inset-0 bg-neutral-850" />
 
       {/* Brushed steel direction */}
       <div
@@ -57,7 +57,7 @@ export default function HomePage() {
       <div className="relative space-y-10 p-6 sm:p-8">
         {/* Hero */}
         <section className="space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-xs text-neutral-300">
+          <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950/60 px-3 py-1 text-xs text-neutral-300">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
             Proof-anchored claims • AI summaries • On-chain verification
           </div>
@@ -75,7 +75,7 @@ export default function HomePage() {
         </section>
 
         {/* Search */}
-        <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-4 sm:p-5">
+        <section className="rounded-3xl border border-neutral-800 bg-neutral-950/60 p-4 sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-3 rounded-2xl border border-neutral-800 bg-neutral-950 px-4 py-3">
@@ -89,7 +89,7 @@ export default function HomePage() {
                 {q && (
                   <button
                     onClick={() => setQ("")}
-                    className="rounded-lg px-2 py-1 text-xs text-neutral-400 hover:bg-neutral-900 hover:text-neutral-200 transition"
+                    className="rounded-lg px-2 py-1 text-xs text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200 transition"
                   >
                     Clear
                   </button>
@@ -193,7 +193,7 @@ export default function HomePage() {
               </div>
 
               {filtered.length === 0 && (
-                <div className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-6 text-sm text-neutral-400">
+                <div className="rounded-3xl border border-neutral-800 bg-neutral-950/60 p-6 text-sm text-neutral-400">
                   No cars found. Try a broader search like “2021” or “Toyota”.
                 </div>
               )}
