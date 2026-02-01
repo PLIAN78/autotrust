@@ -38,6 +38,17 @@ router.get("/by-subject/:subjectId", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+router.get("/by-subject/:subjectId", async (req, res) => {
+  try {
+    const doc = await Reputation.findOne({ subjectId: req.params.subjectId })
+      .sort({ createdAt: -1 });
+
+    if (!doc) return res.status(404).json({ error: "Not found" });
+    res.json(doc);
+  } catch (err) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // Get reputation by Mongo _id
 router.get("/:id", async (req, res) => {
