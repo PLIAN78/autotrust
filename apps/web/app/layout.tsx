@@ -6,7 +6,11 @@ export const metadata = {
   description: "Verifiable car reputation powered by proofs + AI explanations",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
@@ -21,11 +25,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Page container */}
         <div className="relative mx-auto max-w-6xl px-6 py-8">
           <header className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="text-xl font-semibold tracking-tight text-white"
-            >
-              AutoTrust
+            {/* Metallic AutoTrust title */}
+            <Link href="/" className="text-xl font-semibold tracking-tight">
+              <span
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #d4d4d4 0%, #ffffff 40%, #a3a3a3 70%, #e5e5e5 100%)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                  textShadow: "0 1px 1px rgba(0,0,0,0.35)",
+                }}
+              >
+                AutoTrust
+              </span>
             </Link>
 
             <nav className="flex items-center gap-4 text-sm text-neutral-300">
@@ -33,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 href="/submit"
                 className="rounded-lg px-3 py-1.5 hover:bg-neutral-800 hover:text-white transition"
               >
+
               </Link>
             </nav>
           </header>
@@ -40,7 +54,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="mt-12">{children}</main>
 
           <footer className="mt-20 border-t border-neutral-800 pt-6 text-xs text-neutral-500">
-            Built for hackathon demo • Proofs on-chain • Evidence off-chain • AI explains only
+            Built for hackathon demo • Proofs on-chain • Evidence off-chain • AI
+            explains only
           </footer>
         </div>
       </body>

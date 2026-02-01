@@ -62,21 +62,22 @@ export default function HomePage() {
             Proof-anchored claims • AI summaries • On-chain verification
           </div>
 
-          {/* Metallic sheen title (reliable, no Tailwind bg-clip dependency) */}
+          {/* Metallic sheen title */}
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             <span
               style={{
                 backgroundImage:
-                  "linear-gradient(90deg, #d4d4d4 0%, #ffffff 35%, #a3a3a3 70%, #e5e5e5 100%)",
+                  "linear-gradient(90deg, #f5f5f5 0%, #ffffff 35%, #e5e5e5 65%, #f8f8f8 100%)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
-                textShadow: "0 1px 1px rgba(0,0,0,0.35)", // subtle depth
+                textShadow: "0 1px 0.5px rgba(0,0,0,0.25)",
               }}
             >
               Verifiable Car Reputation
             </span>
           </h1>
+
 
           <p className="max-w-2xl text-base leading-relaxed text-neutral-300">
             Rankings built from{" "}

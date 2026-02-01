@@ -75,8 +75,7 @@ export default function SubmitClaimPage() {
           </h1>
   
           <p className="max-w-2xl text-sm leading-relaxed text-neutral-300">
-            Claims are stored off-chain and anchored with a cryptographic proof hash
-            (and Solana transaction when available).
+            Claims are stored off-chain and anchored with a cryptographic proof hash.
           </p>
         </section>
   
