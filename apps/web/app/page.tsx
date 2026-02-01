@@ -1,5 +1,7 @@
 "use client";
 
+const words = ["Verifiable", "Car", "Reputation"];
+
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { api, Car } from "@/lib/api";

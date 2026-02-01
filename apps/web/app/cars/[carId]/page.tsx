@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, use } from "react";
 import { api, Car, Claim } from "@/lib/api";
 
-export default function CarDetailPage(props: { params: Promise<{ carId: string }> }) {
-  const params = use(props.params);
+export default function CarDetailPage(props: { params: { carId: string } }) {
+  const params = props.params;
   const carId = params.carId;
 
   const [car, setCar] = useState<Car | null>(null);
