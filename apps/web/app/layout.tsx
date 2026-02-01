@@ -33,7 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 href="/submit"
                 className="rounded-lg px-3 py-1.5 hover:bg-neutral-800 hover:text-white transition"
               >
-                Submit Claim
               </Link>
             </nav>
           </header>
