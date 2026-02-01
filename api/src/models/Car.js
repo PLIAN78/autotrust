@@ -5,6 +5,7 @@ const CarSchema = new mongoose.Schema(
     make: { type: String, required: true },
     model: { type: String, required: true },
     year: { type: Number },
+    imageUrl: { type: String, default: "" },
     // Optional: used for quick search
     searchText: { type: String, index: true },
   },

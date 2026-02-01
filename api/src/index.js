@@ -1,18 +1,21 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-
+import path from "path";
+import { fileURLToPath } from "url";
 import { connectDB } from "./config/db.js";
 import healthRouter from "./routes/health.js";
 import reputationRouter from "./routes/reputation.js";
 import carsRouter from "./routes/cars.js";
 import claimsRouter from "./routes/claims.js";
 import carsClaimsRouter from "./routes/cars_claims.js";
+import uploadsRouter from "./routes/uploads.js";
 
 dotenv.config();
 
 const app = express(); // ✅ app must be created BEFORE any app.use
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://localhost:5173"],
@@ -34,6 +37,8 @@ app.use("/reputation", reputationRouter);
 app.use("/cars", carsRouter);
 app.use("/claims", claimsRouter);
 app.use("/cars", carsClaimsRouter); 
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+app.use("/uploads", uploadsRouter);
 
 
 // ✅ error handler MUST be after routes

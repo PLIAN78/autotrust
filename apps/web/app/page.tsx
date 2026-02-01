@@ -54,7 +54,7 @@ export default function HomePage() {
                    rgba(255,255,255,0.10),
                    transparent_60%)]"
       />
-
+    
       {/* Content wrapper */}
       <div className="relative space-y-10 p-6 sm:p-8">
         {/* Hero */}
@@ -170,6 +170,32 @@ export default function HomePage() {
                         </span>
                       </div>
                     </div>
+                      {(() => {
+  const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+  const imgSrc =
+    c.imageUrl && c.imageUrl.startsWith("http")
+      ? c.imageUrl
+      : c.imageUrl
+      ? `${apiBase}${c.imageUrl}`
+      : "/placeholder-car.png";
+
+  return (
+    <img
+      src={imgSrc}
+      alt={`${c.make} ${c.model}`}
+      style={{
+        width: "100%",
+        height: 160,
+        objectFit: "cover",
+        borderRadius: 12,
+        marginTop: 16,
+      }}
+      onError={(e) => {
+        e.currentTarget.src = "/placeholder-car.png";
+      }}
+    />
+  );
+})()}
 
                     <p className="mt-4 text-sm leading-relaxed text-neutral-300">
                       View claims, on-chain proof hashes, and an AI explanation

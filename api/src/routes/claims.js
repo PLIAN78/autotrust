@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
       evidenceSummary: body.evidenceSummary,
       evidence: body.evidence,
       contributor: body.contributor,
+      evidenceUrl: typeof body.evidenceUrl === "string" ? body.evidenceUrl : "",
     });
 
     // Create a stable proof hash placeholder (later you’ll anchor this on Solana)
@@ -42,6 +43,7 @@ router.post("/", async (req, res) => {
       contributor: doc.contributor,
       createdAt: doc.createdAt,
       id: String(doc._id),
+      
     });
 
     const proof = { hash: sha256(canonical) };

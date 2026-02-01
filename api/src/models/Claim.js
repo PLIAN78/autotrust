@@ -12,6 +12,7 @@ const ClaimSchema = new mongoose.Schema(
 
     statement: { type: String, required: true },
     evidenceSummary: { type: String, required: true },
+    evidenceUrl: { type: String, default: "" },
 
     evidence: {
       samples: { type: Number },

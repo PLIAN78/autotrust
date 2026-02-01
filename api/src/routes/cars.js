@@ -56,5 +56,34 @@ router.get("/:carId", async (req, res) => {
     res.status(400).json({ error: "Invalid carId" });
   }
 });
+// PATCH /cars/:carId/image { imageUrl: "/uploads/xxx.jpg" }
+router.patch("/:carId/image", async (req, res) => {
+  try {
+    const { imageUrl } = req.body || {};
+    if (!imageUrl || typeof imageUrl !== "string") {
+      return res.status(400).json({ error: "imageUrl required" });
+    }
+
+    const car = await Car.findByIdAndUpdate(
+      req.params.carId,
+      { imageUrl },
+      { new: true }
+    );
+
+    if (!car) return res.status(404).json({ error: "Car not found" });
+
+    res.json({
+      car: {
+        carId: String(car._id),
+        make: car.make,
+        model: car.model,
+        year: car.year,
+        imageUrl: car.imageUrl || "",
+      },
+    });
+  } catch {
+    res.status(400).json({ error: "Invalid carId" });
+  }
+});
 
 export default router;
