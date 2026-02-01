@@ -1,7 +1,5 @@
 "use client";
 
-const words = ["Verifiable", "Car", "Reputation"];
-
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { api, Car } from "@/lib/api";
@@ -64,15 +62,27 @@ export default function HomePage() {
             Proof-anchored claims • AI summaries • On-chain verification
           </div>
 
+          {/* Metallic sheen title (reliable, no Tailwind bg-clip dependency) */}
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Verifiable Car Reputation
+            <span
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #d4d4d4 0%, #ffffff 35%, #a3a3a3 70%, #e5e5e5 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                textShadow: "0 1px 1px rgba(0,0,0,0.35)", // subtle depth
+              }}
+            >
+              Verifiable Car Reputation
+            </span>
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-neutral-300">
             Rankings built from{" "}
             <span className="text-white">claims with proof hashes</span>, not
-            sponsored opinions. AI summarizes only what’s provided—no hallucinated
-            “reviews.”
+            sponsored opinions. AI summarizes only what’s provided—no
+            hallucinated “reviews.”
           </p>
         </section>
 

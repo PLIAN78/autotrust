@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useEffect, useState, use } from "react";
 import { api, Car, Claim } from "@/lib/api";
 
-export default function CarDetailPage(props: { params: { carId: string } }) {
-  const params = props.params;
-  const carId = params.carId;
+export default function CarDetailPage(
+  props: { params: Promise<{ carId: string }> }
+) {
+  const { carId } = use(props.params);
 
   const [car, setCar] = useState<Car | null>(null);
   const [claims, setClaims] = useState<Claim[]>([]);
