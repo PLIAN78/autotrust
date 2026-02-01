@@ -43,5 +43,80 @@ Frontend and backend live in a monorepo because chaos builds character.
 
 ---
 
-## Project structure
+# Hackathon stuff
+
+AutoTrust is an experiment in building car reputation without marketing bias.
+
+Most car rankings are influenced by brands, dealerships, or sponsored narratives. AutoTrust flips that model by treating reputation as a collection of verifiable claims instead of opinions.
+
+Each claim is tied to evidence, stored off-chain, and anchored with a cryptographic proof hash. Rather than asking users to trust a score, the system lets them inspect what was claimed, who claimed it, and what proof exists.
+
+The goal is not to recommend cars, but to make reputation auditable.
+
+---
+
+## What AutoTrust does
+
+- Lists cars by make, model, and year
+- Allows users to submit claims tied to a specific car
+- Supports evidence uploads (images or documents)
+- Anchors claims with cryptographic proof hashes
+- Separates reputation from brand influence and sponsored content
+
+There are no star ratings, paid boosts, or hidden weighting systems.
+
+---
+
+## Technical overview
+
+- Next.js (App Router) frontend
+- Express + MongoDB backend
+- Evidence uploads served from the backend
+- Cryptographic proof anchoring (Solana integration stubbed)
+
+Frontend and backend are managed in a single monorepo.
+
+---
+
+## Architecture
+
+/apps/web        → frontend (Next.js)
+/api             → backend (Express, MongoDB)
+/uploads         → stored evidence files
+
+---
+
+## Running locally
+
+Backend:
+
+cd api  
+npm install  
+npm run dev  
+
+Frontend:
+
+cd apps/web  
+npm install  
+npm run dev  
+
+Environment variable:
+
+NEXT_PUBLIC_API_URL=http://localhost:4000
+
+---
+
+## Why this matters
+
+AutoTrust explores how reputation systems can be built around verifiability instead of persuasion.
+
+The same structure can apply to products, services, or any domain where trust is currently shaped by incentives rather than evidence.
+
+---
+
+## Status
+
+Prototype built during a hackathon.  
+Actively iterated, intentionally opinionated, and designed to be extended.
+
 
