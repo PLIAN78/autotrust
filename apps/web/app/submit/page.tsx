@@ -39,7 +39,7 @@ export default function SubmitClaimPage() {
   return (
     <div className="relative overflow-hidden rounded-[28px] border border-neutral-800/80 bg-neutral-850/40">
       {/* Steel base */}
-      <div className="pointer-events-none absolute inset-0 bg-neutral-900" />
+      <div className="pointer-events-none absolute inset-0 bg-neutral-950" />
   
       {/* Brushed steel sheen */}
       <div
@@ -83,7 +83,7 @@ export default function SubmitClaimPage() {
         {/* Form panel */}
         <form
           onSubmit={onSubmit}
-          className="rounded-3xl border border-neutral-800/80 bg-neutral-900/40 backdrop-blur p-6 space-y-6"
+          className="rounded-3xl border border-neutral-800/80 bg-neutral-900/60 backdrop-blur p-6 space-y-6"
         >
           {/* Car + category */}
           <div className="grid gap-4 md:grid-cols-2">
